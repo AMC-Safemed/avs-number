@@ -27,10 +27,10 @@ bool is_valid_avs_number (char* avs_no)
     int i;
     int total = 0;
     for (i = 0 ; i < 12 ; i += 2) {
-        total =+ avs_no[i] - '0';
+        total += avs_no[i] - '0';
     }
     for (i = 1 ; i < 12 ; i += 2) {
-        total =+ 3 * (avs_no[i]) - '0';
+        total += 3 * (avs_no[i] - '0');
     }
 
     int expected_key = 0;
