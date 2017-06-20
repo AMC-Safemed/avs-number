@@ -19,14 +19,24 @@ def is_valid_avs_number(number):
     odd = lambda i: 3 * int(number[i])
     even = lambda i: int(number[i])
 
-    total = odd(11) + even(10) + odd(9) + even(8) + odd(7) + even(6) + \
-            odd(5) + even(4) + odd(3) + even(2) + odd(1) + even(0)
+    total = 0
+    for i in range(0,12,2):
+        total += even(i)
+    for i in range(1,12,2):
+        total += odd(i)
 
     expected_key = 0
     if total % 10 != 0:
-        ten_up = (total//10)*10 + 10
-        expected_key = ten_up - total
+        round_ten_up = (total//10)*10 + 10
+        expected_key = round_ten_up - total
 
     actual_key = int(number[12])
 
     return actual_key == expected_key
+
+if __name__ == '__main__':
+    print('Expected: True, actual:', is_valid_avs_number('756.1234.5678.97'))
+    print('Expected: False, actual:', is_valid_avs_number('756.1234.5678.98'))
+    print('Expected: False, actual:', is_valid_avs_number('756.1234.5678.99'))
+    print('Expected: False, actual:', is_valid_avs_number('756.1234.5678.9'))
+    print('Expected: False, actual:', is_valid_avs_number('756.1234.5678.999'))
