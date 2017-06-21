@@ -1,3 +1,5 @@
+/* https://jsfiddle.net/7v570ca9/ */
+
 function canonize(avs_no) {
 	return avs_no.replace(/\./g, "")
 }
